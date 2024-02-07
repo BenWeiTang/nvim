@@ -96,7 +96,6 @@ vim.keymap.set('n', '<leader>rr', function()
             end
             vim.cmd(":copen")
             vim.fn.setqflist(entries, "r")
-            -- vim.cmd(":Telescope quickfix")
         else
             print("Rename aborted")
         end
