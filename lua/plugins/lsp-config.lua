@@ -41,7 +41,16 @@ return {
                 cmd = {
                     "clangd",
                     "--offset-encoding=utf-16",
-                }
+                },
+                root_dir = config.util.root_pattern(
+                    '.clangd',
+                    '.clang-tidy',
+                    '.clang-format',
+                    'compile_commands.json',
+                    'compile_flags.txt',
+                    'configure.ac',
+                    '.git'
+                ) 
             })
 
             config.cmake.setup({
