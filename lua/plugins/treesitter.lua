@@ -10,18 +10,5 @@ return {
                 indent = { enable = true },
             })
         end
-    },
-    {
-        "nvim-treesitter/nvim-treesitter-refactor",
-        config = function()
-            require("nvim-treesitter.configs").setup({
-                refactor = {
-                    highlight_definitions = {
-                        enable = true,
-                        clear_on_cursor_move = true,
-                    }
-                }
-            })
-        end
-    },
+    }
 }
