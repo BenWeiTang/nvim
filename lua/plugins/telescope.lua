@@ -22,7 +22,13 @@ return {
                     }
                 },
             })
-            require("telescope").load_extension("ui-select")
+            local telescope = require("telescope")
+            telescope.load_extension("ui-select")
+            telescope.load_extension("fzf")
         end
+    },
+    {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
     }
 }
