@@ -89,6 +89,10 @@ vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
 vim.keymap.set('n', '<leader>rr', function()
     local position_params = vim.lsp.util.make_position_params()
     local new_name = vim.fn.input("New Name > ")
+    if not new_name or new_name == "" then
+        print("Rename aborted!")
+        return
+    end
     position_params.newName = new_name
 
     vim.lsp.buf_request(0, "textDocument/rename", position_params, function(err, result, ctx, config)
@@ -113,8 +117,6 @@ vim.keymap.set('n', '<leader>rr', function()
             end
             vim.cmd(":copen")
             vim.fn.setqflist(entries, "r")
-        else
-            print("Rename aborted")
         end
     end)
 end, {})
