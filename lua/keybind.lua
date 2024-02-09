@@ -25,13 +25,16 @@ vim.keymap.set("n", "<leader>/", ":noh<CR>") -- Leader / to remove highlight, us
 vim.keymap.set("n", "<leader>bd", function()
     local bd = require("mini.bufremove").delete
     if vim.bo.modified then
-        local choice = vim.fn.confirm(("Save chages to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
-        if choice == 1 then -- Yes
-            vim.cmd.write()
-            bd(0)
-        elseif choice == 2 then -- No
-            bd(0, true)
-        end
+        vim.ui.select( { "Yes", "No", "Cancel" }, {
+            prompt = string.format("Save changes to %s?", vim.fn.bufname())
+        }, function(choice)
+            if choice == "Yes" then -- Yes
+                vim.cmd.write()
+                bd(0)
+            elseif choice == "No" then -- No
+                bd(0, true)
+            end
+        end)
     else
         bd(0)
     end
