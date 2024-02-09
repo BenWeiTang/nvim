@@ -40,6 +40,9 @@ vim.keymap.set("n", "<leader>bd", function()
     end
 end, { desc = "Delete buffer", remap = false })
 
+-- clangd extensions
+vim.keymap.set("n", "<leader>cR", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Switch Source/Header" })
+
 -- Comment
 local comment = require("mini.comment")
 comment.setup({
