@@ -25,9 +25,8 @@ vim.keymap.set("n", "<leader>/", ":noh<CR>") -- Leader / to remove highlight, us
 vim.keymap.set("n", "<leader>bd", function()
     local bd = require("mini.bufremove").delete
     if vim.bo.modified then
-
         local choice = vim.fn.confirm(("Save chages to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
-        if choice == 1 then     -- Yes
+        if choice == 1 then -- Yes
             vim.cmd.write()
             bd(0)
         elseif choice == 2 then -- No
@@ -79,8 +78,8 @@ vim.keymap.set("t", "<leader>tt", "<C-\\><C-n><CMD>lua require('FTerm').toggle()
 vim.keymap.set("t", "<leader>td", "<C-\\><C-n><CMD>lua require('FTerm').exit()<CR>") -- Maybe I want to exit terminal upon closing as well...
 
 -- Leap
-vim.keymap.set({"n", "v"}, "<leader>s", "<Plug>(leap-forward)", {})
-vim.keymap.set({"n", "v"}, "<leader>S", "<Plug>(leap-backward)", {})
+vim.keymap.set({ "n", "v" }, "<leader>s", "<Plug>(leap-forward)", {})
+vim.keymap.set({ "n", "v" }, "<leader>S", "<Plug>(leap-backward)", {})
 vim.keymap.set("n", "<leader>gs", "<Plug>(leap-from-window)", {})
 
 -- Nvim-lspconfig
