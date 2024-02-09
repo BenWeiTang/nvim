@@ -21,6 +21,11 @@ vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>")
 
 vim.keymap.set("n", "<leader>/", ":noh<CR>") -- Leader / to remove highlight, useful after searching a pattern
 
+vim.keymap.set("n", "<A-=>", "<C-w>+")
+vim.keymap.set("n", "<A-->", "<C-w>-")
+vim.keymap.set("n", "<A-.>", "<C-w>>")
+vim.keymap.set("n", "<A-,>", "<C-w><")
+
 -- Buffer Remove
 vim.keymap.set("n", "<leader>bd", function()
     local bd = require("mini.bufremove").delete
