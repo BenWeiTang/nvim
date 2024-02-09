@@ -15,3 +15,4 @@ vim.g.mapleader = ','
 -- Not too sure if this works well on other themes and on other platforms
 vim.cmd("autocmd ColorScheme * highlight NormalFloat guifg=none guibg=none")
 vim.cmd("autocmd ColorScheme * highlight FloatBorder guifg=none guibg=none")
+vim.cmd("autocmd ColorScheme * highlight FloatTitle guifg=none guibg=none")
