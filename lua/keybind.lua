@@ -25,7 +25,7 @@ vim.keymap.set("n", "<leader>/", ":noh<CR>") -- Leader / to remove highlight, us
 vim.keymap.set("n", "<leader>bd", function()
     local bd = require("mini.bufremove").delete
     if vim.bo.modified then
-        vim.ui.select( { "Yes", "No", "Cancel" }, {
+        vim.ui.select({ "Yes", "No", "Cancel" }, {
             prompt = string.format("Save changes to %s?", vim.fn.bufname())
         }, function(choice)
             if choice == "Yes" then -- Yes
@@ -91,37 +91,37 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
 vim.keymap.set("n", "<leader>rr", function()
-    local position_params = vim.lsp.util.make_position_params()
-    local new_name = vim.fn.input("New Name > ")
-    if not new_name or new_name == "" then
-        print("Rename aborted!")
-        return
-    end
-    position_params.newName = new_name
-
-    vim.lsp.buf_request(0, "textDocument/rename", position_params, function(err, result, ctx, config)
-        vim.lsp.handlers["textDocument/rename"](err, result, ctx, config)
-
-        if result and result.changes then
-            local entries = {}
-            for uri, edits in pairs(result.changes) do
-                local bufnr = vim.uri_to_bufnr(uri)
-
-                for _, edit in ipairs(edits) do
-                    local start_line = edit.range.start.line + 1
-                    local line = vim.api.nvim_buf_get_lines(bufnr, start_line - 1, start_line, false)[1]
-
-                    table.insert(entries, {
-                        bufnr = bufnr,
-                        lnum = start_line,
-                        col = edit.range.start.character + 1,
-                        text = line,
-                    })
-                end
-            end
-            vim.cmd(":copen")
-            vim.fn.setqflist(entries, "r")
+    vim.ui.input("New name", function(input)
+        if not input or input == "" then
+            print("Rename aborted!")
+            return
         end
+        local position_params = vim.lsp.util.make_position_params()
+        position_params.newName = input
+        vim.lsp.buf_request(0, "textDocument/rename", position_params, function(err, result, ctx, config)
+            vim.lsp.handlers["textDocument/rename"](err, result, ctx, config)
+
+            if result and result.changes then
+                local entries = {}
+                for uri, edits in pairs(result.changes) do
+                    local bufnr = vim.uri_to_bufnr(uri)
+
+                    for _, edit in ipairs(edits) do
+                        local start_line = edit.range.start.line + 1
+                        local line = vim.api.nvim_buf_get_lines(bufnr, start_line - 1, start_line, false)[1]
+
+                        table.insert(entries, {
+                            bufnr = bufnr,
+                            lnum = start_line,
+                            col = edit.range.start.character + 1,
+                            text = line,
+                        })
+                    end
+                end
+                vim.cmd(":copen")
+                vim.fn.setqflist(entries, "r")
+            end
+        end)
     end)
 end, {})
 
