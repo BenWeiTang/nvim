@@ -3,7 +3,7 @@ return {
     config = function()
         require("dressing").setup({
             select = {
-                backend = { "builtin", "telescope", "nui", "fzf", "fzf_lua" }
+                backend = { "nui", "telescope", "builtin", "fzf", "fzf_lua" }
             },
         })
     end
