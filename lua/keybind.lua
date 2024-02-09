@@ -26,7 +26,7 @@ vim.keymap.set("n", "<leader>bd", function()
     local bd = require("mini.bufremove").delete
     if vim.bo.modified then
         vim.ui.select({ "Yes", "No", "Cancel" }, {
-            prompt = string.format("Save changes to %s?", vim.fn.bufname())
+            prompt = string.format("Save changes to %s?", vim.fn.bufname():match("[^/\\]+$"))
         }, function(choice)
             if choice == "Yes" then -- Yes
                 vim.cmd.write()
