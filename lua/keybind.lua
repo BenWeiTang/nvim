@@ -83,6 +83,13 @@ vim.keymap.set("n", "<leader>tt", "<CMD>lua require('FTerm').toggle()<CR>")
 vim.keymap.set("t", "<leader>tt", "<C-\\><C-n><CMD>lua require('FTerm').toggle()<CR>")
 vim.keymap.set("t", "<leader>td", "<C-\\><C-n><CMD>lua require('FTerm').exit()<CR>") -- Maybe I want to exit terminal upon closing as well...
 
+-- Gitsigns
+vim.keymap.set("n", "]h", ":Gitsigns next_hunk<CR>", { desc = "Next Hunk" })
+vim.keymap.set("n", "[h", ":Gitsigns prev_hunk<CR>", { desc = "Previous Hund" })
+vim.keymap.set({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", { desc = "Stage Hunk" })
+vim.keymap.set({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", { desc = "Reset Hunk" })
+vim.keymap.set("n", "<leader>ghu", ":Gitsigns undo_stage_hunk<CR>", { desc = "Undo Stage Hunk" })
+
 -- Leap
 vim.keymap.set({ "n", "v" }, "<leader>s", "<Plug>(leap-forward)", {})
 vim.keymap.set({ "n", "v" }, "<leader>S", "<Plug>(leap-backward)", {})
