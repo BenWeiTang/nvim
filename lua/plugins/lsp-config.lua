@@ -61,10 +61,19 @@ return {
                     local on_attach = require("cmp_nvim_lsp").on_attach
                     on_attach(client, bufnr)
                 end,
-                capabilities = capabilities,
+
+                -- See: https://github.com/p00f/clangd_extensions.nvim/blob/main/README.md#completion-scores
+                capabilities = {
+                    offsetEncoding = { "utf-16" },
+                },
                 cmd = {
                     "clangd",
-                    "--offset-encoding=utf-16",
+                    "--background-index",
+                    "--clang-tidy",
+                    "--header-insertion=iwyu",
+                    "--completion-style=detailed",
+                    "--function-arg-placeholders",
+                    "--fallback-style=llvm",
                 },
                 root_dir = config.util.root_pattern(
                     '.clangd',
