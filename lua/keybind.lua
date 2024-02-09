@@ -89,6 +89,7 @@ vim.keymap.set("n", "[h", ":Gitsigns prev_hunk<CR>", { desc = "Previous Hund" })
 vim.keymap.set({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", { desc = "Stage Hunk" })
 vim.keymap.set({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", { desc = "Reset Hunk" })
 vim.keymap.set("n", "<leader>ghu", ":Gitsigns undo_stage_hunk<CR>", { desc = "Undo Stage Hunk" })
+vim.keymap.set("n", "<leader>ghp", ":Gitsigns preview_hunk_inline<CR>", { desc = "Preview Hunk Inline" })
 
 -- Leap
 vim.keymap.set({ "n", "v" }, "<leader>s", "<Plug>(leap-forward)", {})
