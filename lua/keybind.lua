@@ -15,10 +15,10 @@ end
 vim.keymap.set("i", "kj", "<esc>", { remap = false })
 vim.keymap.set("n", "<space>", ":w<cr>", { remap = false })
 
-vim.keymap.set("n", "<A-h>", "<C-w>h", { desc = "Go to left window", remap = true }) -- Honestly, not too sure if I want recursive mapping here...
-vim.keymap.set("n", "<A-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
-vim.keymap.set("n", "<A-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
-vim.keymap.set("n", "<A-l>", "<C-w>l", { desc = "Go to right window", remap = true })
+vim.keymap.set("n", ThumbCombo("h"), "<C-w>h", { desc = "Go to left window", remap = true }) -- Honestly, not too sure if I want recursive mapping here...
+vim.keymap.set("n", ThumbCombo("j"), "<C-w>j", { desc = "Go to lower window", remap = true })
+vim.keymap.set("n", ThumbCombo("k"), "<C-w>k", { desc = "Go to upper window", remap = true })
+vim.keymap.set("n", ThumbCombo("l"), "<C-w>l", { desc = "Go to right window", remap = true })
 
 vim.keymap.set("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 vim.keymap.set("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
@@ -34,10 +34,10 @@ vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>")
 
 vim.keymap.set("n", "<leader>/", ":noh<CR>") -- Leader / to remove highlight, useful after searching a pattern
 
-vim.keymap.set("n", "<A-=>", "<C-w>+")
-vim.keymap.set("n", "<A-->", "<C-w>-")
-vim.keymap.set("n", "<A-.>", "<C-w>>")
-vim.keymap.set("n", "<A-,>", "<C-w><")
+vim.keymap.set("n", ThumbCombo("="), "<C-w>+")
+vim.keymap.set("n", ThumbCombo("-"), "<C-w>-")
+vim.keymap.set("n", ThumbCombo(">"), "<C-w>>")
+vim.keymap.set("n", ThumbCombo("<"), "<C-w><")
 
 -- Buffer Remove
 vim.keymap.set("n", "<leader>bd", function()
@@ -69,8 +69,8 @@ comment.setup({
         comment = "",
         textobject = "",
 
-        comment_line = "<A-/>",
-        comment_visual = "<A-/>",
+        comment_line = ThumbCombo("/"),
+        comment_visual = ThumbCombo("/"),
     }
 })
 
@@ -79,15 +79,15 @@ local cmp = require("cmp")
 cmp.setup({
     mapping = cmp.mapping.preset.insert({
         -- Default recommended mapping
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.abort(),
+        [PinkyCombo("b")] = cmp.mapping.scroll_docs(-4),
+        [PinkyCombo("f")] = cmp.mapping.scroll_docs(4),
+        [PinkyCombo("Space")] = cmp.mapping.complete(),
+        [PinkyCombo("e")] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
 
         -- Custom mapping
-        ["<A-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-        ["<A-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+        [ThumbCombo("k")] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+        [ThumbCombo("j")] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
     }),
 })
 
@@ -157,12 +157,12 @@ vim.keymap.set("n", "<leader>rr", function()
 end, {})
 
 -- Neotree
-vim.keymap.set("n", "<a-n>", ":Neotree filesystem toggle left<cr>", {})
+vim.keymap.set("n", ThumbCombo("n"), ":Neotree filesystem toggle left<cr>", {})
 
 -- None-ls
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 
 -- Telescope
 local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<a-p>", builtin.find_files, {})
+vim.keymap.set("n", ThumbCombo("p"), builtin.find_files, {})
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
