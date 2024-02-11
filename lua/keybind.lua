@@ -1,15 +1,7 @@
--- Platform agnostic control keys
--- See ":help keycodes"
-local os = require("os-config").GetName()
-local thumb = (os == "win") and "A" or "M" -- Thumb key is Alt for Windows and Command for Mac
-local pinky = "C"
-local function ThumbCombo(key)
-    return "<" .. thumb .. key .. ">"
-end
-
-local function PinkyCombo(key)
-    return "<" .. pinky .. key .. ">"
-end
+-- Platform-agnostic action keys
+local os = require("os-config")
+local ThumbCombo = os.ThumbCombo
+local PinkyCombo = os.PinkyCombo
 
 -- Basic Vim Key Remap
 vim.keymap.set("i", "kj", "<esc>", { remap = false })
