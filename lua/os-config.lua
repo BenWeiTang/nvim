@@ -28,7 +28,8 @@ end
 function M.PinkyCombo(key)
     if not pinky then
         local os = M.GetName()
-        pinky = (os == "win") and "A" or "M"
+        -- For now there's only windows and mac, both of which use pinky to press Ctrl
+        pinky = (os == "win") and "C" or "C"
     end
     return "<" .. pinky .. "-" .. key .. ">"
 end
