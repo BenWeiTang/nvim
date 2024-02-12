@@ -39,7 +39,7 @@ return {
                 ["<M-->"] = require("os-config").GetThumbKeyName() .. " -",
                 ["<M-=>"] = require("os-config").GetThumbKeyName() .. " =",
                 ["<M->>"] = require("os-config").GetThumbKeyName() .. " >",
-                ["<M-<>"] = require("os-config").GetThumbKeyName() .. " <",
+                ["<M-lt>"] = require("os-config").GetThumbKeyName() .. " <",
                 ["<M-/>"] = require("os-config").ThumbCombo("/"),
             }
         })
