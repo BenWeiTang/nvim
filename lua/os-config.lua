@@ -6,7 +6,7 @@ local os_name = nil
 local thumb = nil
 local pinky = nil
 
-function M.GetName()
+function M.Init()
     if not os_name then
         if (vim.fn.has("windows")) then
             os_name = "win"
@@ -14,24 +14,53 @@ function M.GetName()
             os_name = "mac"
         end
     end
+end
+
+-- Get the name of the OS, e.g., win or mac
+function M.GetName()
+    if not os_name then
+        M.Init()
+    end
     return os_name
 end
 
-function M.ThumbCombo(key)
+-- Get the keycode of the thumb key, e.g., A or M
+function M.GetThumbKey()
     if not thumb then
         local os = M.GetName()
         thumb = (os == "win") and "A" or "M"
     end
-    return "<" .. thumb .. "-" .. key .. ">"
+    return thumb;
 end
 
-function M.PinkyCombo(key)
+-- Get the keycode of the pinky key, e.g., C
+function M.GetPinkyKey()
     if not pinky then
         local os = M.GetName()
         -- For now there's only windows and mac, both of which use pinky to press Ctrl
         pinky = (os == "win") and "C" or "C"
     end
-    return "<" .. pinky .. "-" .. key .. ">"
+    return pinky;
+end
+
+-- Get the name of the thumb key, e.g., Alt or Cmd
+function M.GetThumbKeyName()
+    return (M.GetThumbKey() == "A") and "Alt" or "Cmd"
+end
+
+-- Get the name of the Pinky key, e.g., Ctrl
+function M.GetPinkyKeyName()
+    return (M.GetPinkyKey() == "C") and "Ctrl" or "Ctrl"
+end
+
+-- Get the keycode of thumb key combo, e.g., <A-key> or <M-key>
+function M.ThumbCombo(key)
+    return "<" .. M.GetThumbKey() .. "-" .. key .. ">"
+end
+
+-- Get the keycode of pinky key combo, e.g., <C-key>
+function M.PinkyCombo(key)
+    return "<" .. M.GetPinkyKey() .. "-" .. key .. ">"
 end
 
 return M

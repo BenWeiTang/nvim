@@ -4,8 +4,8 @@ local ThumbCombo = os.ThumbCombo
 local PinkyCombo = os.PinkyCombo
 
 -- Basic Vim Key Remap
-vim.keymap.set("i", "kj", "<esc>", { remap = false })
-vim.keymap.set("n", "<space>", ":w<cr>", { remap = false })
+vim.keymap.set("i", "kj", "<esc>", { desc = "Return to Normal Mode", remap = false })
+vim.keymap.set("n", "<space>", ":w<cr>", { desc = "Save", remap = false })
 
 vim.keymap.set("n", ThumbCombo("h"), "<C-w>h", { desc = "Go to left window", remap = true }) -- Honestly, not too sure if I want recursive mapping here...
 vim.keymap.set("n", ThumbCombo("j"), "<C-w>j", { desc = "Go to lower window", remap = true })
@@ -19,17 +19,17 @@ vim.keymap.set("n", "<leader>w\\", "<C-W>v", { desc = "Split window right", rema
 vim.keymap.set("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
 vim.keymap.set("n", "<leader>\\", "<C-W>v", { desc = "Split window right", remap = true })
 
-vim.keymap.set("n", "H", ":bprevious<CR>")
-vim.keymap.set("n", "L", ":bnext<CR>")
-vim.keymap.set("n", "<Tab>", ":bnext<CR>")
-vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>")
+vim.keymap.set("n", "H", ":bprevious<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "L", ":bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<Tab>", ":bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { desc = "Previous Buffer" })
 
-vim.keymap.set("n", "<leader>/", ":noh<CR>") -- Leader / to remove highlight, useful after searching a pattern
+vim.keymap.set("n", "<leader>/", ":noh<CR>", { desc = "Remove Highlight" })
 
-vim.keymap.set("n", ThumbCombo("="), "<C-w>+")
-vim.keymap.set("n", ThumbCombo("-"), "<C-w>-")
-vim.keymap.set("n", ThumbCombo(">"), "<C-w>>")
-vim.keymap.set("n", ThumbCombo("<"), "<C-w><")
+vim.keymap.set("n", ThumbCombo("="), "<C-w>+", { desc = " window height"})
+vim.keymap.set("n", ThumbCombo("-"), "<C-w>-", { desc = " window height"})
+vim.keymap.set("n", ThumbCombo(">"), "<C-w>>", { desc = " window width"})
+vim.keymap.set("n", ThumbCombo("<"), "<C-w><", { desc = " window width"})
 
 -- Buffer Remove
 vim.keymap.set("n", "<leader>bd", function()
@@ -85,13 +85,13 @@ cmp.setup({
 
 -- Debugging
 local dap = require("dap")
-vim.keymap.set("n", "<leader>dt", dap.toggle_breakpoint, {}) -- "dt" means debug toggle
-vim.keymap.set("n", "<leader>dc", dap.continue, {})          -- "dc" means debug continue
+vim.keymap.set("n", "<leader>dt", dap.toggle_breakpoint, { desc = "Toggle breakpoint" }) -- "dt" means debug toggle
+vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Continue" })          -- "dc" means debug continue
 
 -- Floating Terminal
-vim.keymap.set("n", "<leader>tt", "<CMD>lua require('FTerm').toggle()<CR>")
-vim.keymap.set("t", "<leader>tt", "<C-\\><C-n><CMD>lua require('FTerm').toggle()<CR>")
-vim.keymap.set("t", "<leader>td", "<C-\\><C-n><CMD>lua require('FTerm').exit()<CR>") -- Maybe I want to exit terminal upon closing as well...
+vim.keymap.set("n", "<leader>tt", "<CMD>lua require('FTerm').toggle()<CR>", { desc = "Toggle floating terminal" })
+vim.keymap.set("t", "<leader>tt", "<C-\\><C-n><CMD>lua require('FTerm').toggle()<CR>", { desc = "Toggle floating terminal" })
+vim.keymap.set("t", "<leader>td", "<C-\\><C-n><CMD>lua require('FTerm').exit()<CR>", { desc = "Delete floating terminal session" }) -- Maybe I want to exit terminal upon closing as well...
 
 -- Gitsigns
 vim.keymap.set("n", "]h", ":Gitsigns next_hunk<CR>", { desc = "Next Hunk" })
@@ -104,15 +104,14 @@ vim.keymap.set("n", "<leader>ghd", ":Gitsigns diffthis<CR>", { desc = "Diff This
 vim.keymap.set("n", "<leader>ghD", ":Gitsigns diffthis ~<CR>", { desc = "Diff This" })
 
 -- Leap
-vim.keymap.set({ "n", "v" }, "<leader>s", "<Plug>(leap-forward)", {})
-vim.keymap.set({ "n", "v" }, "<leader>S", "<Plug>(leap-backward)", {})
-vim.keymap.set("n", "<leader>gs", "<Plug>(leap-from-window)", {})
+vim.keymap.set({ "n", "v" }, "<leader>l", "<Plug>(leap-forward)", { desc = "Leap forward" })
+vim.keymap.set({ "n", "v" }, "<leader>L", "<Plug>(leap-backward)", { desc = "Leap backward" })
 
 -- Nvim-lspconfig
-vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show definition" })
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "List references" })
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
 vim.keymap.set("n", "<leader>rr", function()
     vim.ui.input("New name", function(input)
         if not input or input == "" then
@@ -146,15 +145,15 @@ vim.keymap.set("n", "<leader>rr", function()
             end
         end)
     end)
-end, {})
+end, { desc = "Rename variable" })
 
 -- Neotree
-vim.keymap.set("n", ThumbCombo("n"), ":Neotree filesystem toggle left<cr>", {})
+vim.keymap.set("n", ThumbCombo("n"), ":Neotree filesystem toggle left<cr>", { desc = "Toggle filesystem" })
 
 -- None-ls
-vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+vim.keymap.set("n", "<leader>fg", vim.lsp.buf.format, { desc = "Format File" })
 
 -- Telescope
 local builtin = require("telescope.builtin")
-vim.keymap.set("n", ThumbCombo("p"), builtin.find_files, {})
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+vim.keymap.set("n", ThumbCombo("p"), builtin.find_files, { desc = "Find Files" })
+vim.keymap.set("n", "<leader>ff", builtin.live_grep, { desc = "Fuzzy Find" })
