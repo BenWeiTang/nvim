@@ -12,7 +12,7 @@ return {
             ["<leader>c"] = { name = "Code" },
             ["<leader>d"] = { name = "DAP" },
             ["<leader>f"] = { name = "Find/Format" },
-            ["<leader>g"] = { name = "Git", h = { name = "Hunk" } },
+            ["<leader>g"] = { name = "Git", h = { name = "Hunk" }, b = { name = "Buffer" } },
             ["<leader>r"] = { name = "Rename" },
             ["<leader>t"] = { name = "Terminal" },
             ["<leader>w"] = { name = "Window" },

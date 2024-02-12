@@ -94,14 +94,16 @@ vim.keymap.set("t", "<leader>tt", "<C-\\><C-n><CMD>lua require('FTerm').toggle()
 vim.keymap.set("t", "<leader>td", "<C-\\><C-n><CMD>lua require('FTerm').exit()<CR>", { desc = "Delete floating terminal session" }) -- Maybe I want to exit terminal upon closing as well...
 
 -- Gitsigns
-vim.keymap.set("n", "]h", ":Gitsigns next_hunk<CR>", { desc = "Next Hunk" })
-vim.keymap.set("n", "[h", ":Gitsigns prev_hunk<CR>", { desc = "Previous Hund" })
-vim.keymap.set({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", { desc = "Stage Hunk" })
-vim.keymap.set({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", { desc = "Reset Hunk" })
-vim.keymap.set("n", "<leader>ghu", ":Gitsigns undo_stage_hunk<CR>", { desc = "Undo Stage Hunk" })
-vim.keymap.set("n", "<leader>ghp", ":Gitsigns preview_hunk_inline<CR>", { desc = "Preview Hunk Inline" })
-vim.keymap.set("n", "<leader>ghd", ":Gitsigns diffthis<CR>", { desc = "Diff This" })
-vim.keymap.set("n", "<leader>ghD", ":Gitsigns diffthis ~<CR>", { desc = "Diff This" })
+vim.keymap.set("n", "]h", ":Gitsigns next_hunk<CR>", { desc = "Next hunk" })
+vim.keymap.set("n", "[h", ":Gitsigns prev_hunk<CR>", { desc = "Previous hun" })
+vim.keymap.set({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", { desc = "Stage hunk" })
+vim.keymap.set({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", { desc = "Reset hunk" })
+vim.keymap.set("n", "<leader>gbs", ":Gitsigns stage_buffer<CR>", { desc = "Stage buffer" })
+vim.keymap.set("n", "<leader>gbr", ":Gitsigns reset_buffer<CR>", { desc = "Reset buffer" })
+vim.keymap.set("n", "<leader>ghu", ":Gitsigns undo_stage_hunk<CR>", { desc = "Undo stage hunk" })
+vim.keymap.set("n", "<leader>ghp", ":Gitsigns preview_hunk_inline<CR>", { desc = "Preview hunk inline" })
+vim.keymap.set("n", "<leader>ghd", ":Gitsigns diffthis<CR>", { desc = "Diff this" })
+vim.keymap.set("n", "<leader>ghD", ":Gitsigns diffthis ~<CR>", { desc = "Diff this" })
 
 -- Leap
 vim.keymap.set({ "n", "v" }, "<leader>l", "<Plug>(leap-forward)", { desc = "Leap forward" })
@@ -111,7 +113,7 @@ vim.keymap.set({ "n", "v" }, "<leader>L", "<Plug>(leap-backward)", { desc = "Lea
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show definition" })
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "List references" })
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 vim.keymap.set("n", "<leader>rr", function()
     vim.ui.input("New name", function(input)
         if not input or input == "" then
