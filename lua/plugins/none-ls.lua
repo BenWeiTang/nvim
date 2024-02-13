@@ -8,7 +8,7 @@ return {
                     -- See below links for more info
                     -- https://github.com/nvimtools/none-ls.nvim/blob/main/doc/BUILTIN_CONFIG.md#arguments
                     -- https://clang.llvm.org/docs/ClangFormatStyleOptions.html
-                    extra_args = { '-style=Microsoft' },
+                    extra_args = { '-style=Google' },
                 }),
                 null_ls.builtins.formatting.stylua,
                 null_ls.builtins.formatting.black,
