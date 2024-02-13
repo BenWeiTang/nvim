@@ -8,9 +8,9 @@ local pinky = nil
 
 function M.Init()
     if not os_name then
-        if (vim.fn.has("windows")) then
+        if (package.config:sub(1,1) == "\\") then
             os_name = "win"
-        elseif (vim.fn.has("macunix")) then
+        else
             os_name = "mac"
         end
     end
