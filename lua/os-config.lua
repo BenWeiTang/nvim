@@ -29,6 +29,10 @@ function M.GetThumbKey()
     if not thumb then
         local os = M.GetName()
         thumb = (os == "win") and "A" or "M"
+        -- M is actually Meta key, which is Option on Mac by Neovim's default
+        -- Because Cmd key is reserved for a lot of tasks, it's better to use the Option key 
+        -- This API assumes the terminal app remaps Cmd to Opt (See: GetThumbkeyName)
+        -- so a lot of the action key combos can still be triggered by pressing Cmd
     end
     return thumb;
 end
