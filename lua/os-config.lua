@@ -8,9 +8,9 @@ local pinky = nil
 
 function M.Init()
     if not os_name then
-        if (vim.fn.has("windows")) then
+        if (package.config:sub(1,1) == "\\") then
             os_name = "win"
-        elseif (vim.fn.has("macunix")) then
+        else
             os_name = "mac"
         end
     end
@@ -29,6 +29,10 @@ function M.GetThumbKey()
     if not thumb then
         local os = M.GetName()
         thumb = (os == "win") and "A" or "M"
+        -- M is actually Meta key, which is Option on Mac by Neovim's default
+        -- Because Cmd key is reserved for a lot of tasks, it's better to use the Option key 
+        -- This API assumes the terminal app remaps Cmd to Opt (See: GetThumbkeyName)
+        -- so a lot of the action key combos can still be triggered by pressing Cmd
     end
     return thumb;
 end
