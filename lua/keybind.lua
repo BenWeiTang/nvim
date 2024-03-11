@@ -59,9 +59,9 @@ local comment = require("mini.comment")
 comment.setup({
     mappings = {
         -- Originally 'gc', but it's not really used so set to disabled
-        comment = ThumbCombo("/"),
+        comment = "",
+        textobject = "",
 
-        textobject = ThumbCombo("/"),
         comment_line = ThumbCombo("/"),
         comment_visual = ThumbCombo("/"),
     }
