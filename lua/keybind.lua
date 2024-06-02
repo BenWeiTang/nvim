@@ -85,9 +85,9 @@ cmp.setup({
 })
 
 -- Debugging
-local dap = require("dap")
-vim.keymap.set("n", "<leader>dt", dap.toggle_breakpoint, { desc = "Toggle breakpoint" }) -- "dt" means debug toggle
-vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Continue" })          -- "dc" means debug continue
+-- local dap = require("dap")
+-- vim.keymap.set("n", "<leader>dt", dap.toggle_breakpoint, { desc = "Toggle breakpoint" }) -- "dt" means debug toggle
+-- vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Continue" })          -- "dc" means debug continue
 
 -- Floating Terminal
 vim.keymap.set("n", "<leader>tt", "<CMD>lua require('FTerm').toggle()<CR>", { desc = "Toggle floating terminal" })
