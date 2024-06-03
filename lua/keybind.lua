@@ -7,6 +7,8 @@ local PinkyCombo = os.PinkyCombo
 vim.keymap.set("i", "kj", "<esc>", { desc = "Return to Normal Mode", remap = false })
 vim.keymap.set("n", "<space>", ":w<CR>", { desc = "Save", remap = false })
 vim.keymap.set("c", "qq<CR>", ":wqa<CR>", { desc = "Write-quit all" , remap = false })
+vim.keymap.set("n", PinkyCombo("d"), "<c-d>zz", { desc = "Go down half a page", remap = false})
+vim.keymap.set("n", PinkyCombo("u"), "<c-u>zz", { desc = "Go up half a page", remap = false})
 
 vim.keymap.set("n", ThumbCombo("h"), "<C-w>h", { desc = "Go to left window", remap = true }) -- Honestly, not too sure if I want recursive mapping here...
 vim.keymap.set("n", ThumbCombo("j"), "<C-w>j", { desc = "Go to lower window", remap = true })
