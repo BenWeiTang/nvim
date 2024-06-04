@@ -73,14 +73,7 @@ comment.setup({
 local cmp = require("cmp")
 cmp.setup({
     mapping = cmp.mapping.preset.insert({
-        -- Default recommended mapping
-        [PinkyCombo("b")] = cmp.mapping.scroll_docs(-4),
-        [PinkyCombo("f")] = cmp.mapping.scroll_docs(4),
-        [PinkyCombo("Space")] = cmp.mapping.complete(),
-        [PinkyCombo("e")] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
-
-        -- Custom mapping
         [ThumbCombo("k")] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
         [ThumbCombo("j")] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
     }),
