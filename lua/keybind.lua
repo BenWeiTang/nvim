@@ -79,6 +79,25 @@ cmp.setup({
     }),
 })
 
+-- luasnip
+local ls = require("luasnip")
+vim.keymap.set({"i", "s"}, ThumbCombo("l"), function ()
+    if ls.expand_or_jumpable() then
+        ls.expand_or_jump()
+    end
+end, { silent = true })
+vim.keymap.set({"i", "s"}, ThumbCombo("h"), function ()
+    if ls.jumpable(-1) then
+        ls.jump(-1)
+    end
+end, { silent = true })
+-- Haven't thought about which key to use for this mapping
+-- vim.keymap.set({"i"}, ThumbCombo("put something here"), function ()
+--     if ls.choice_active() then
+--         ls.change_choice(1)
+--     end
+-- end)
+
 -- Debugging
 -- local dap = require("dap")
 -- vim.keymap.set("n", "<leader>dt", dap.toggle_breakpoint, { desc = "Toggle breakpoint" }) -- "dt" means debug toggle

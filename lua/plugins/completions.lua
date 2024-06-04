@@ -28,6 +28,7 @@ return {
                 sources = {
                     { name = "nvim_lsp" },
                     { name = "nvim_lua" }, -- this plugin/source knows to enable itself only inside lua
+                    { name = "luasnip" },
                     { name = "buffer" , keyword_length = 5},
                     { name = "path" },
                     { name = "nvim_lsp" }
