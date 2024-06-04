@@ -66,7 +66,9 @@ return {
                     client.server_capabilities.signatureHelpProvider = false
 
                     local on_attach = require("cmp_nvim_lsp").on_attach
-                    on_attach(client, bufnr)
+                    if on_attach ~= nil then
+                        on_attach(client, bufnr)
+                    end
                 end,
 
                 -- See: https://github.com/p00f/clangd_extensions.nvim/blob/main/README.md#completion-scores
