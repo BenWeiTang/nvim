@@ -54,6 +54,13 @@ return {
                 end
             })
 
+            local clangd_path = "clangd"
+            local proj_env = require("project-env-config")
+            if proj_env.GetIsUnrealProject() then
+                -- This will require installing a clangd thorugh Visual Studio Installer
+                clangd_path = "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\Llvm\\x64\\bin\\clangd.exe"
+            end
+
             config.clangd.setup({
                 on_attach = function(client, bufnr)
                     client.server_capabilities.signatureHelpProvider = false
@@ -67,7 +74,7 @@ return {
                     offsetEncoding = { "utf-16" },
                 },
                 cmd = {
-                    "clangd",
+                    clangd_path,
                     "--background-index",
                     "--clang-tidy",
                     "--header-insertion=iwyu",
