@@ -91,12 +91,16 @@ vim.keymap.set({"i", "s"}, ThumbCombo("h"), function ()
         ls.jump(-1)
     end
 end, { silent = true })
--- Haven't thought about which key to use for this mapping
--- vim.keymap.set({"i"}, ThumbCombo("put something here"), function ()
---     if ls.choice_active() then
---         ls.change_choice(1)
---     end
--- end)
+vim.keymap.set({"i"}, ThumbCombo(";"), function ()
+    if ls.choice_active() then
+        ls.change_choice(1)
+    end
+end)
+vim.keymap.set({"i"}, ThumbCombo(","), function ()
+    if ls.choice_active() then
+        ls.change_choice(-1)
+    end
+end)
 
 -- Debugging
 -- local dap = require("dap")
