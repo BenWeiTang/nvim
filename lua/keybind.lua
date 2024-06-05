@@ -131,6 +131,7 @@ vim.keymap.set({ "n", "v" }, "<leader>L", "<Plug>(leap-backward)", { desc = "Lea
 -- Nvim-lspconfig
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show definition" })
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set("n", "gd", vim.lsp.buf.declaration, { desc = "Go to declaration" })
 vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "List references" })
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 vim.keymap.set("n", "<leader>rr", function()
