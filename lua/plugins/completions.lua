@@ -10,9 +10,12 @@ return {
             "saadparwaiz1/cmp_luasnip",
             "rafamadriz/friendly-snippets",
             "L3MON4D3/LuaSnip",
+            "onsails/lspkind.nvim",
+
         },
         config = function()
-            local cmp = require 'cmp'
+            local cmp = require("cmp")
+            local lspkind = require("lspkind")
             require("luasnip.loaders.from_vscode").lazy_load()
 
             cmp.setup({
@@ -32,6 +35,18 @@ return {
                     { name = "buffer" , keyword_length = 5},
                     { name = "path" },
                     { name = "nvim_lsp" }
+                },
+                formatting = {
+                    format = lspkind.cmp_format {
+                        with_text = true,
+                        menu = {
+                            buffer = "[buf]",
+                            nvim_lsp = "[LSP]",
+                            nvim_lua = "[API]",
+                            path = "[path]",
+                            luasnip = "[Snippet]",
+                        }
+                    }
                 },
 
                 -- See: https://github.com/p00f/clangd_extensions.nvim/blob/main/README.md#completion-scores
