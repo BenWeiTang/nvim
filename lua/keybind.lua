@@ -53,8 +53,6 @@ vim.keymap.set("n", "<leader>bd", function()
     end
 end, { desc = "Delete buffer", remap = false })
 
--- clangd extensions
-vim.keymap.set("n", "<leader>cR", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Switch Source/Header" })
 
 -- Comment
 local comment = require("mini.comment")
@@ -179,3 +177,29 @@ vim.keymap.set("n", "<leader>fg", vim.lsp.buf.format, { desc = "Format File" })
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", ThumbCombo("p"), builtin.find_files, { desc = "Find Files" })
 vim.keymap.set("n", "<leader>ff", builtin.live_grep, { desc = "Fuzzy Find" })
+
+-- Header / source file switching
+local is_unreal_project = require("project-env-config").GetIsUnrealProject()
+if not is_unreal_project then
+    -- clangd extensions
+    vim.keymap.set("n", "<leader>cR", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Switch Source/Header" })
+else
+    -- ATM clangd does not work properly with UE's setup because of the auto generated header file and its directory structure
+    local current_file_name = vim.fn.expand("%:t")
+    local table = vim.split(current_file_name, ".", { plain=true })
+    local file_name = table[1]
+    local file_type = table[2]
+
+    local edit_command
+    -- local edit_command = ':lua require("telescope.builtin").find_files({search_file="LTSToggleBase.cpp"})<CR><CR>'
+
+    if file_type == "h" then
+        edit_command = '<cmd>lua require("telescope.builtin").find_files({search_file="' .. file_name .. '".cpp' .. '})<CR>'
+    elseif file_type == "cpp" then
+        edit_command = '<cmd>lua require("telescope.builtin").find_files({search_file="' .. file_name .. '".h' .. '})<CR>'
+    else
+        return
+    end
+
+    vim.keymap.set("n", "<leader>ch", edit_command, { desc = "Switch Source/Header"} )
+end
