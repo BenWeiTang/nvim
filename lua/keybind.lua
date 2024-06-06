@@ -183,24 +183,38 @@ vim.keymap.set("n", "<leader>ff", builtin.live_grep, { desc = "Fuzzy Find" })
 local is_unreal_project = require("project-env-config").GetIsUnrealProject()
 if not is_unreal_project then
     -- clangd extensions
-    vim.keymap.set("n", "<leader>cR", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Switch Source/Header" })
+    vim.keymap.set("n", "<leader>o", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Switch Source/Header" })
 else
     -- ATM clangd does not work properly with UE's setup because of the auto generated header file and its directory structure
-    local current_file_name = vim.fn.expand("%:t")
-    local table = vim.split(current_file_name, ".", { plain=true })
-    local file_name = table[1]
-    local file_type = table[2]
+    vim.keymap.set("n", "<leader>o", function()
+        local current_absolute = vim.api.nvim_buf_get_name(0)
+        local name_type_pair = vim.split(current_absolute, "/")         -- Split into list
+        name_type_pair = name_type_pair[#name_type_pair]                -- Get the last in list
+        name_type_pair = vim.split(name_type_pair, ".", { plain=true }) -- Split into pair (i.g., name.type)
+        local current_name = name_type_pair[1]
+        local current_type = name_type_pair[2]
 
-    local edit_command
-    -- local edit_command = ':lua require("telescope.builtin").find_files({search_file="LTSToggleBase.cpp"})<CR><CR>'
+        if current_type ~= "cpp" and current_type ~= "h" then
+            print("Not a source file nor a header file.")
+            return
+        end
+        local target_type = current_type == "cpp" and "h" or "cpp"      -- Flip h and cpp
 
-    if file_type == "h" then
-        edit_command = '<cmd>lua require("telescope.builtin").find_files({search_file="' .. file_name .. '".cpp' .. '})<CR>'
-    elseif file_type == "cpp" then
-        edit_command = '<cmd>lua require("telescope.builtin").find_files({search_file="' .. file_name .. '".h' .. '})<CR>'
-    else
-        return
-    end
+        local target_file_name = vim.fs.find(function(name, _)
+            return name:match(string.format("%s.%s", current_name, target_type))
+        end, {
+            type = "file",
+        })
 
-    vim.keymap.set("n", "<leader>ch", edit_command, { desc = "Switch Source/Header"} )
+        target_file_name = target_file_name[1]  -- target_file_name was a list of strings, now it becomes its first element: string
+        if (target_file_name == nil) then
+            if target_type == "cpp" then
+                print("Couldn't find the corresponding source file. Is it header-only?")
+            elseif target_type == "h" then
+                print("Couldn't find the corresponding header file!")
+            end
+            return
+        end
+        vim.cmd(string.format("e %s", target_file_name))
+    end, { desc = "Switch Source/Header" })
 end
