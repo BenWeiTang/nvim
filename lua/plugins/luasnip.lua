@@ -24,7 +24,7 @@ return {
             },
         })
 
-        if require("project-env-config").GetIsUnrealProject then
+        if require("project-env-config").GetIsUnrealProject() then
             ls.add_snippets("all", {
                 s("ufn", fmt([[
             UFUNCTION({finish})

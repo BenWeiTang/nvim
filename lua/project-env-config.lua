@@ -7,7 +7,7 @@ function M.GetIsUnrealProject()
         upward = true,
         type = "file",
     })
-    return uproject ~= nil
+    return next(uproject) ~= nil
 end
 
 return M
