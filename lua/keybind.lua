@@ -5,6 +5,7 @@ local PinkyCombo = os.PinkyCombo
 
 -- Basic Vim Key Remap
 vim.keymap.set("i", "kj", "<esc>", { desc = "Return to Normal Mode", remap = false })
+vim.keymap.set("v", "q", "<esc>", { desc = "Return to Normal Mode", remap = false })
 vim.keymap.set("n", "<space>", ":w<CR>", { desc = "Save", remap = false })
 vim.keymap.set("c", "qq<CR>", ":wqa<CR>", { desc = "Write-quit all" , remap = false })
 vim.keymap.set("n", PinkyCombo("d"), "<c-d>zz", { desc = "Go down half a page", remap = false})
