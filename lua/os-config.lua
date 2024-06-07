@@ -67,4 +67,9 @@ function M.PinkyCombo(key)
     return "<" .. M.GetPinkyKey() .. "-" .. key .. ">"
 end
 
+-- Get the path delimiter depending on the OS
+function M.GetPathDelimiter()
+    return (M.GetName() == "win") and "\\" or "/"
+end
+
 return M
