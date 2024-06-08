@@ -94,12 +94,12 @@ vim.keymap.set({"i"}, ThumbCombo(";"), function ()
     if ls.choice_active() then
         ls.change_choice(1)
     end
-end)
+end, { silent = true })
 vim.keymap.set({"i"}, ThumbCombo(","), function ()
     if ls.choice_active() then
         ls.change_choice(-1)
     end
-end)
+end, { silent = true })
 
 -- Debugging
 -- local dap = require("dap")
