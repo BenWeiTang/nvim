@@ -21,33 +21,33 @@ return {
                     end,
                 },
                 window = {
-                    completion = cmp.config.window.bordered(),
-                    documentation = cmp.config.window.bordered(),
+                    completion      = cmp.config.window.bordered(),
+                    documentation   = cmp.config.window.bordered(),
                 },
                 sources = {
                     { name = "nvim_lsp" },
                     { name = "nvim_lua" }, -- this plugin/source knows to enable itself only inside lua
-                    { name = "luasnip" },
+                    { name = "luasnip"  },
                     { name = "buffer" , keyword_length = 5},
-                    { name = "path" },
+                    { name = "path"     },
                     { name = "nvim_lsp" }
                 },
                 formatting = {
                     format = function(entry, vim_item)
                         vim_item.menu = ({
-                            buffer = "[buf]",
-                            nvim_lsp = "[LSP]",
-                            nvim_lua = "[API]",
-                            path = "[path]",
-                            luasnip = "[Snippet]",
+                            buffer      = "[buf]",
+                            nvim_lsp    = "[LSP]",
+                            nvim_lua    = "[API]",
+                            path        = "[path]",
+                            luasnip     = "[Snippet]",
                         })[entry.source.name]
 
                         vim_item.dup = ({
-                            buffer = 0,
-                            nvim_lsp = 0,
-                            nvim_lua = 0,
-                            path = 0,
-                            luansip = 0,
+                            buffer      = 0,
+                            nvim_lsp    = 0,
+                            nvim_lua    = 0,
+                            path        = 0,
+                            luansip     = 0,
                         })[entry.source.name] or 0
 
                         return vim_item
@@ -79,8 +79,8 @@ return {
             cmp.setup.cmdline(':', {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = cmp.config.sources({
-                    { name = 'path' },
-                    { name = 'cmdline' }
+                    { name = 'path'     },
+                    { name = 'cmdline'  }
                 })
             })
         end
