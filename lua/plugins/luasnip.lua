@@ -116,6 +116,7 @@ return {
                 s("tobjptr",            { t("TObjectPtr<"), i(1, ""), t(">"), i(0, "") }),
                 s("tsharedptr",         { t("TSharedPtr<"), i(1, ""), t(">"), i(0, "") }),
                 s("cast",               { t("Cast<"), i(1, "TO"), t(", "), i(2, "FROM"), t(">("), i(3, ""), t(")"), i(0, "") }),
+                s("tooltip",            { t("ToolTip=\"") , i(1, ""), t("\"") }),
                 s("gcsfrontendapi",     { t("GCS_FRONTEND_API") }), -- project-based, change later
             })
         end
