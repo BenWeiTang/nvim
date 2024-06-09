@@ -75,7 +75,7 @@ return {
 
                     public:
                         {finish}
-                    }}
+                    }};
                     ]], {
                         class_name = f(function()
                             return vim.split(path.GetCurrentFileName(), ".", { plain=true })[1]
