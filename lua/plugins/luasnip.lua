@@ -49,12 +49,11 @@ return {
                 ),
 
                 s("ustruct", fmt([[
-                    USTRUCT()
+                    USTRUCT({finish})
                     struct {API} F{name}
-                    {
+                    {{
                         GENERATED_USTRUCT_BODY()
-                        {finish}
-                    };
+                    }};
                     ]], {
                         name    = i(1, "Identifier"),
                         API     = i(2, "API_NAME"),
