@@ -26,8 +26,8 @@ return {
 
         if require("project-env-config").GetIsUnrealProject() then
             local path = require("path")
-            ls.add_snippets("all", {
-                s("ufunction", fmt([[
+            ls.add_snippets("cpp", {
+                s({ trig="ufunction", desc="Snippet for UFUNCTION" }, fmt([[
                     UFUNCTION({finish})
                     {ret} {name}({params}){tail};
                     ]], {
@@ -39,7 +39,7 @@ return {
                     })
                 ),
 
-                s("uproperty", fmt([[
+                s({ trig="uproperty", desc="Snippet for UPROPERTY" }, fmt([[
                     UPROPERTY({finish})
                     {type} {name};
                     ]], {
@@ -49,7 +49,7 @@ return {
                     })
                 ),
 
-                s("ustruct", fmt([[
+                s({ trig="ustruct", desc="Snippet for UStruct" }, fmt([[
                     USTRUCT({finish})
                     struct {API} F{name}
                     {{
@@ -62,7 +62,7 @@ return {
                     })
                 ),
 
-                s("uobject", fmt([[
+                s({ trig="uobject", desc="Snippet for UObject class" }, fmt([[
                     #pragma once
 
                     #include "CoreMinimal.h"
@@ -106,8 +106,8 @@ return {
                 s("editinstanceonly",   { t("EditInstanceOnly") }),
 
                 -- UCLASS and USTRUCT Blueprint-ability
-                s("blueprinttype", { t("BlueprintType") }),
-                s("blueprintable", { t("Blueprintable") }),
+                s({ trig="blueprinttype", desc="Exposes this class as a type that can be used for variables in Blueprints." }, { t("BlueprintType") }),
+                s({ trig="blueprintable", desc="Exposes this class as an acceptable base class for creating Blueprints." }, { t("Blueprintable") }),
 
                 -- Miscellaneous
                 s("category",           { t("Category=\""), i(1, "Category"), t("\"") }),
