@@ -69,7 +69,7 @@ return {
                     #include "{class_name}.generated.h"
 
                     UCLASS()
-                    class MY_API U{class_name} : public uobject
+                    class MY_API U{class_name} : public UObject
                     {{
                         GENERATED_BODY()
 
