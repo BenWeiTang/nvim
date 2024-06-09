@@ -25,6 +25,7 @@ return {
         })
 
         if require("project-env-config").GetIsUnrealProject() then
+            local path = require("path")
             ls.add_snippets("all", {
                 s("ufunction", fmt([[
                     UFUNCTION({finish})
@@ -58,6 +59,28 @@ return {
                         name    = i(1, "Identifier"),
                         API     = i(2, "API_NAME"),
                         finish  = i(0, "")
+                    })
+                ),
+
+                s("uobject", fmt([[
+                    #pragma once
+
+                    #include "CoreMinimal.h"
+                    #include "{class_name}.generated.h"
+
+                    UCLASS()
+                    class MY_API U{class_name} : public uobject
+                    {{
+                        GENERATED_BODY()
+
+                    public:
+                        {finish}
+                    }}
+                    ]], {
+                        class_name = f(function()
+                            return vim.split(path.GetCurrentFileName(), ".", { plain=true })[1]
+                        end),
+                        finish = i(0, "")
                     })
                 ),
 
