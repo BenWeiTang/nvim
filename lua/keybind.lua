@@ -187,25 +187,23 @@ if not is_unreal_project then
 else
     -- ATM clangd does not work properly with UE's setup because of the auto generated header file and its directory structure
     vim.keymap.set("n", "<leader>o", function()
-        local current_absolute = vim.api.nvim_buf_get_name(0)
-        current_absolute = vim.fs.normalize(current_absolute)
-        local name_type_pair = vim.split(current_absolute, "/", { plain=true })         -- Split into list
-        name_type_pair = name_type_pair[#name_type_pair]                                -- Get the last in list
-        name_type_pair = vim.split(name_type_pair, ".", { plain=true })                 -- Split into pair (i.g., name.type)
-        local current_name = name_type_pair[1]
-        local current_type = name_type_pair[2]
+        local path = require("path")
+        local cur_name = path.GetCurrentFileName()
+        local pair = vim.split(cur_name, ".", { plain=true })   -- Split into pair (i.g., name.type)
+        local file_name = pair[1]
+        local file_type = pair[2]
 
-
-        if current_type ~= "cpp" and current_type ~= "h" then
-            local msg = string.format("Not a source file nor a header file. Path: %s", current_absolute)
+        if file_type ~= "cpp" and file_type ~= "h" then
+            local cur_abs = path.GetCurrentAbsPath()
+            local msg = string.format("Not a source file nor a header file. Path: %s", cur_abs)
             print(msg)
             return
         end
-        local target_type = current_type == "cpp" and "h" or "cpp"      -- Flip h and cpp
+        local target_type = file_type == "cpp" and "h" or "cpp"      -- Flip h and cpp
 
-        local target_file_name = vim.fs.find(function(name, _)
-            local target = string.format("%s.%s", current_name, target_type)
-            return name:match(string.format("%s$", target))
+        local target_file_name = vim.fs.find(function(entry, _)
+            local target = string.format("%s.%s", file_name, target_type)
+            return entry:match(string.format("%s$", target))
         end, {
             type = "file",
         })
