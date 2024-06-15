@@ -183,10 +183,10 @@ vim.keymap.set("n", "<leader>ff", builtin.live_grep, { desc = "Fuzzy Find" })
 local is_unreal_project = require("project-env-config").GetIsUnrealProject()
 if not is_unreal_project then
     -- clangd extensions
-    vim.keymap.set("n", "<leader>o", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Switch Source/Header" })
+    vim.keymap.set("n", ThumbCombo("o"), "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Switch Source/Header" })
 else
     -- ATM clangd does not work properly with UE's setup because of the auto generated header file and its directory structure
-    vim.keymap.set("n", "<leader>o", function()
+    vim.keymap.set("n", ThumbCombo("o"), function()
         local path = require("path")
         local cur_name = path.GetCurrentFileName()
         local pair = vim.split(cur_name, ".", { plain=true })   -- Split into pair (i.g., name.type)
