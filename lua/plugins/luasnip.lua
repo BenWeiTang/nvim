@@ -86,7 +86,7 @@ return {
 
                 s({ trig="uenum", desc="Snippet for UEnum"}, fmt([[
                     UENUM(BlueprintType)
-                    enum class U{enum_name} : uint8
+                    enum class E{enum_name} : uint8
                     {{
                         {finish}
                     }};
