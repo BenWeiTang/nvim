@@ -19,7 +19,7 @@ return {
             { "<leader>t", group = "Terminal" },
             { "<leader>w", group = "Window" },
         })
-        wk.setup({
+        -- wk.setup({
             -- key_labels = {
             --     ["<space>"] = "SPC",
             --     ["<cr>"] = "RET",
@@ -44,6 +44,6 @@ return {
             --     ["<M-lt>"] = require("os-config").GetThumbKeyName() .. " <",
             --     ["<M-/>"] = require("os-config").ThumbCombo("/"),
             -- }
-        })
+        -- })
     end
 }
