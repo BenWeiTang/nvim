@@ -178,6 +178,9 @@ vim.keymap.set("n", "<leader>fg", vim.lsp.buf.format, { desc = "Format File" })
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", ThumbCombo("p"), builtin.find_files, { desc = "Find Files" })
 vim.keymap.set("n", "<leader>ff", builtin.live_grep, { desc = "Fuzzy Find" })
+vim.keymap.set("n", "<leader>fw", function()
+    builtin.grep_string({ search = vim.fn.expand("<cword>") })
+end, { desc = "Fuzzy Find Word Under Cursor" })
 
 -- Header / source file switching
 local is_unreal_project = require("project-env-config").GetIsUnrealProject()
