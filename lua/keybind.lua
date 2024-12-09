@@ -35,6 +35,9 @@ vim.keymap.set("n", ThumbCombo("<"), "<C-w><", { desc = " window width"})
 
 vim.keymap.set("n", "yc", "yygccp", { desc = "Duplicate a line and comment out the first line", remap = true })
 
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected line(s) down" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected line(s) up"})
+
 -- Buffer Remove
 vim.keymap.set("n", "<leader>bd", function()
     local bd = require("mini.bufremove").delete
