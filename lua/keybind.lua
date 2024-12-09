@@ -38,6 +38,8 @@ vim.keymap.set("n", "yc", "yygccp", { desc = "Duplicate a line and comment out t
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected line(s) down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected line(s) up"})
 
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
 -- Buffer Remove
 vim.keymap.set("n", "<leader>bd", function()
     local bd = require("mini.bufremove").delete
