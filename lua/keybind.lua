@@ -118,7 +118,7 @@ vim.keymap.set("t", "<leader>td", "<C-\\><C-n><CMD>lua require('FTerm').exit()<C
 
 -- Gitsigns
 vim.keymap.set("n", "]h", ":Gitsigns next_hunk<CR>", { desc = "Next hunk" })
-vim.keymap.set("n", "[h", ":Gitsigns prev_hunk<CR>", { desc = "Previous hun" })
+vim.keymap.set("n", "[h", ":Gitsigns prev_hunk<CR>", { desc = "Previous hunk" })
 vim.keymap.set({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", { desc = "Stage hunk" })
 vim.keymap.set({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", { desc = "Reset hunk" })
 vim.keymap.set("n", "<leader>gbs", ":Gitsigns stage_buffer<CR>", { desc = "Stage buffer" })
