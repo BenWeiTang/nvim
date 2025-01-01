@@ -34,6 +34,8 @@ vim.keymap.set("n", ThumbCombo(">"), "<C-w>>", { desc = " window width"})
 vim.keymap.set("n", ThumbCombo("<"), "<C-w><", { desc = " window width"})
 
 vim.keymap.set("n", "yc", "yygccp", { desc = "Duplicate a line and comment out the first line", remap = true })
+vim.keymap.set({"n", "v"}, ",y", "\"+y", { desc = "Copy to system clipboard" })
+vim.keymap.set({"n", "v"}, ",p", "\"+p", { desc = "Paste from system clipboard" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected line(s) down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected line(s) up"})
