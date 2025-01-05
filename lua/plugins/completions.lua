@@ -30,7 +30,6 @@ return {
                     { name = "luasnip"  },
                     { name = "buffer" , keyword_length = 5},
                     { name = "path"     },
-                    { name = "nvim_lsp" }
                 },
                 formatting = {
                     format = function(entry, vim_item)
