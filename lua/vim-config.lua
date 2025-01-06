@@ -18,3 +18,9 @@ vim.cmd("autocmd ColorScheme * highlight FloatBorder guifg=none guibg=none")
 vim.cmd("autocmd ColorScheme * highlight FloatTitle guifg=none guibg=none")
 
 vim.lsp.set_log_level("off") -- set to "debug" when you need to debug
+
+-- Sets the border for hovering (Uppercase K)
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+  vim.lsp.handlers.hover,
+  { border = 'rounded' }
+)
