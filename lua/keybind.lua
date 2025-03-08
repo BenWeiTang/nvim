@@ -37,9 +37,6 @@ vim.keymap.set("n", "yc", "yygccp", { desc = "Duplicate a line and comment out t
 vim.keymap.set({"n", "v"}, ",y", "\"+y", { desc = "Copy to system clipboard" })
 vim.keymap.set({"n", "v"}, ",p", "\"+p", { desc = "Paste from system clipboard" })
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selected line(s) down" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selected line(s) up"})
-
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Buffer Remove
@@ -188,6 +185,25 @@ vim.keymap.set("n", "<leader>ff", builtin.live_grep, { desc = "Fuzzy Find" })
 vim.keymap.set("n", "<leader>fw", function()
     builtin.grep_string({ search = vim.fn.expand("<cword>") })
 end, { desc = "Fuzzy Find Word Under Cursor" })
+
+-- Mini Move
+local mini_move = require("mini.move")
+mini_move.setup({
+    mappings = {
+        -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+        left = 'H',
+        right = 'L',
+        down = 'J',
+        up = 'K',
+
+        -- Move current line in Normal mode (disable all)
+        line_left = '',
+        line_right = '',
+        line_down = '',
+        line_up = '',
+    },
+    options = { reindent_linewise = true }
+})
 
 -- Header / source file switching
 local is_unreal_project = require("project-env-config").GetIsUnrealProject()
