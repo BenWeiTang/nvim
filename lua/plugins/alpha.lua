@@ -51,11 +51,7 @@ return {
 			}
 
 		dashboard.section.buttons.val = {
-			dashboard.button(
-				"f",
-				string.format("%s  > Find file", (os == "win") and " " or ""),
-				":Telescope find_files<CR>"
-			),
+			dashboard.button("f", "  > Find file", ":Telescope find_files<CR>"),
 			dashboard.button("n", "  > New file", ":ene <BAR> startinsert <CR>"),
 			dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
 			dashboard.button("l", "󰒲  > Lazy", ":Lazy<CR>"),
