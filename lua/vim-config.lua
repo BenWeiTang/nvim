@@ -6,6 +6,7 @@ vim.cmd('set shiftwidth=4')
 vim.cmd('set number')
 vim.cmd('set relativenumber')
 vim.cmd('set ignorecase')
+vim.cmd('set scroll=10')
 
 -- Leader (Needs to be set before loading plugins)
 vim.g.mapleader = ','
