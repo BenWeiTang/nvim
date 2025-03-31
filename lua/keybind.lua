@@ -135,42 +135,7 @@ vim.keymap.set({ "n", "v" }, "<leader>L", "<Plug>(leap-backward)", { desc = "Lea
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show definition" })
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 vim.keymap.set("n", "gd", vim.lsp.buf.declaration, { desc = "Go to declaration" })
-vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "List references" })
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
-vim.keymap.set("n", "<leader>rr", function()
-    vim.ui.input("New name", function(input)
-        if not input or input == "" then
-            print("Rename aborted!")
-            return
-        end
-        local position_params = vim.lsp.util.make_position_params()
-        position_params.newName = input
-        vim.lsp.buf_request(0, "textDocument/rename", position_params, function(err, result, ctx, config)
-            vim.lsp.handlers["textDocument/rename"](err, result, ctx, config)
-
-            if result and result.changes then
-                local entries = {}
-                for uri, edits in pairs(result.changes) do
-                    local bufnr = vim.uri_to_bufnr(uri)
-
-                    for _, edit in ipairs(edits) do
-                        local start_line = edit.range.start.line + 1
-                        local line = vim.api.nvim_buf_get_lines(bufnr, start_line - 1, start_line, false)[1]
-
-                        table.insert(entries, {
-                            bufnr = bufnr,
-                            lnum = start_line,
-                            col = edit.range.start.character + 1,
-                            text = line,
-                        })
-                    end
-                end
-                vim.cmd(":copen")
-                vim.fn.setqflist(entries, "r")
-            end
-        end)
-    end)
-end, { desc = "Rename variable" })
 
 -- Neotree
 vim.keymap.set("n", ThumbCombo("n"), ":Neotree filesystem toggle left<cr>", { desc = "Toggle filesystem" })
