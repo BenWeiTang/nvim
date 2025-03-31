@@ -33,6 +33,10 @@ return {
                 },
                 formatting = {
                     format = function(entry, vim_item)
+                        -- Adding this so that the completion window is not too long
+                        -- https://github.com/hrsh7th/nvim-cmp/issues/88#issuecomment-906585635
+                        vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
+
                         vim_item.menu = ({
                             buffer      = "[buf]",
                             nvim_lsp    = "[LSP]",
