@@ -72,15 +72,8 @@ comment.setup({
     }
 })
 
--- cmp
-local cmp = require("cmp")
-cmp.setup({
-    mapping = cmp.mapping.preset.insert({
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        [ThumbCombo("k")] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-        [ThumbCombo("j")] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-    }),
-})
+-- Blink-cmp
+-- The keymap setup for blink is a little weird. They are configured in its own plugin file for this reason.
 
 -- luasnip
 local ls = require("luasnip")
