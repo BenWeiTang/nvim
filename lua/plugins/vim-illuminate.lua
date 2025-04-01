@@ -1,11 +1,18 @@
+if true then
+    return {}
+end
 return {
     "RRethy/vim-illuminate",
     config = function()
         require("illuminate").configure({
-            delay = 200,
+            delay = 100,
             large_file_cutoff = 2000,
             large_file_overrides = {
-                providers = { "lsp", }
+                providers = {
+                    "lsp",
+                    "treesitter",
+                    "regex",
+                },
             }
         })
         vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
