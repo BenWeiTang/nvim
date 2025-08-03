@@ -120,13 +120,6 @@ vim.keymap.set("n", "<leader>ghp", ":Gitsigns preview_hunk_inline<CR>", { desc =
 -- vim.keymap.set("n", "<leader>ghd", ":Gitsigns diffthis<CR>", { desc = "Diff this" })
 -- vim.keymap.set("n", "<leader>ghD", ":Gitsigns diffthis ~<CR>", { desc = "Diff this" })
 
--- Leap
-vim.keymap.set({ "n" }, "K", function()
-    vim.lsp.buf.hover{ border = "rounded", max_height = 25, max_width = 120 }
-end, { desc = "Show definition" })
-vim.keymap.set({ "n", "v" }, "<leader>l", "<Plug>(leap-forward)", { desc = "Leap forward" })
-vim.keymap.set({ "n", "v" }, "<leader>L", "<Plug>(leap-backward)", { desc = "Leap backward" })
-
 -- Nvim-lspconfig
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 vim.keymap.set("n", "gd", vim.lsp.buf.declaration, { desc = "Go to declaration" })
