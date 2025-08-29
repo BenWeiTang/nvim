@@ -1,4 +1,4 @@
-vim.lsp.enable({ "clangd", "luals" })
+vim.lsp.enable({ "clangd", "luals", "gopls" })
 
 -- One command applicable for multiple LSPs (?)
 -- https://gpanders.com/blog/whats-new-in-neovim-0-11/#builtin-auto-completion
