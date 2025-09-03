@@ -121,7 +121,7 @@ vim.keymap.set("n", "<leader>ghp", ":Gitsigns preview_hunk_inline<CR>", { desc =
 -- vim.keymap.set("n", "<leader>ghD", ":Gitsigns diffthis ~<CR>", { desc = "Diff this" })
 
 -- Nvim-lspconfig
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set("n", "gD", vim.lsp.buf.definition, { desc = "Go to definition" })
 vim.keymap.set("n", "gd", vim.lsp.buf.declaration, { desc = "Go to declaration" })
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 
