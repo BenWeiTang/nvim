@@ -1,4 +1,5 @@
-vim.lsp.enable({ "clangd", "luals", "gopls" })
+-- DO NOT add "rust" to the list as rustaceanvim handles that automatically
+vim.lsp.enable({ "clangd", "luals", "gopls", "ts", "html" })
 
 -- One command applicable for multiple LSPs (?)
 -- https://gpanders.com/blog/whats-new-in-neovim-0-11/#builtin-auto-completion
