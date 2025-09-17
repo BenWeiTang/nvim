@@ -8,10 +8,13 @@ local pinky = nil
 
 function M.Init()
     if not os_name then
-        if (package.config:sub(1,1) == "\\") then
+        local sysname = vim.uv.os_uname().sysname
+        if (sysname == "Windows_NT") then
             os_name = "win"
-        else
+        elseif (sysname == "Darwin") then
             os_name = "mac"
+        else
+            os_name = "linux"
         end
     end
 end
@@ -22,6 +25,18 @@ function M.GetName()
         M.Init()
     end
     return os_name
+end
+
+-- Get the shell name for the OS, e.g., pwsh, bash, or zsh
+function M.GetShellName()
+    local os = M.GetName()
+    if (os == "win") then
+        return "pwsh"
+    elseif (os == "mac") then
+        return "zsh"
+    else
+        return "bash"
+    end
 end
 
 -- Get the keycode of the thumb key, e.g., A or M
