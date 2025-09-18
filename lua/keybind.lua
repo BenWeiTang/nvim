@@ -25,7 +25,6 @@ vim.keymap.set("n", "<leader>\\", "<C-W>v", { desc = "Split window right", remap
 
 vim.keymap.set("n", "H", ":bprevious<CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "L", ":bnext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<Tab>", ":bnext<CR>", { desc = "Next buffer" })
 vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { desc = "Previous Buffer" })
 
 vim.keymap.set("n", ThumbCombo("="), "<C-w>+", { desc = " window height"})
