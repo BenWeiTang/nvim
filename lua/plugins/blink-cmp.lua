@@ -27,13 +27,15 @@ return {
                 auto_show = true,
                 auto_show_delay_ms = 500,
                 window = {
-                    border = "rounded", -- TODO: unify this with `vim.o.winborder`
+                    -- border = "rounded", -- TODO: unify this with `vim.o.winborder`
+                    border = vim.o.winborder,
                     scrollbar = false,
                     winhighlight = "Normal:BlinkCmpDoc"
                 },
             },
             menu = {
-                border = "rounded", -- TODO: unify this with `vim.o.winborder`
+                -- border = "rounded", -- TODO: unify this with `vim.o.winborder`
+                border = vim.o.winborder,
                 scrollbar = false,
                 winhighlight = "PMenu:BlinkCmpMenu",
             },
