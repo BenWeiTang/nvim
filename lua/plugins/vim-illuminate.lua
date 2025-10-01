@@ -1,5 +1,10 @@
 return {
     "RRethy/vim-illuminate",
+
+    -- This is a hack to make sure `nvim_set_hl` is run
+    -- AFTER the "Visual" highlight group is initialized
+    event = "VeryLazy",
+
     config = function()
         require("illuminate").configure({
             delay = 100,
