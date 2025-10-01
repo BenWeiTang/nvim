@@ -7,7 +7,8 @@ return {
             analysis = {
                 autoSearchPaths = true,
                 diagnosticMode = "openFilesOnly",
-                useLibraryCodeForTypes = true
+                useLibraryCodeForTypes = true,
+                typeCheckingMode = "standard", -- This will suppress reportMissingTypeStubs warning
             }
         }
     }
