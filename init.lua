@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("vim-config")
+require("autocmd")
 require("lazy").setup("plugins")
 require("keybind")
 require("lsp-setup")
