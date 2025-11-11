@@ -3,7 +3,8 @@ return {
     config = function()
         require("lualine").setup({
             options = {
-                theme = 'tomorrow_night'
+                -- theme = 'tomorrow_night'
+                theme = 'iceberg_dark'
             },
             sections = {
                 lualine_c = {
