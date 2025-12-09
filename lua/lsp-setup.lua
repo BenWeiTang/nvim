@@ -1,7 +1,7 @@
 -- DO NOT add "rust" to the list as rustaceanvim handles that automatically
 -- DO NOT add "vue" to the list as typescript-language-server will automatically
 -- use it as a plugin.
-vim.lsp.enable({ "clangd", "luals", "ts", "html", "basedpyright", "tailwindcss" })
+vim.lsp.enable({ "clangd", "luals", "ts", "html", "basedpyright", "tailwindcss", "eslint" })
 
 -- One command applicable for multiple LSPs (?)
 -- https://gpanders.com/blog/whats-new-in-neovim-0-11/#builtin-auto-completion
