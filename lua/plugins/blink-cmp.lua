@@ -11,10 +11,12 @@ return {
         -- See :h blink-cmp-config-keymap for defining your own keymap
         keymap = {
             preset = 'enter', -- 'default' uses <C-y> to accept
-            ["<A-j>"] = { "select_next",        "fallback" },
-            ["<A-k>"] = { "select_prev",        "fallback" },
-            ["<A-l>"] = { "snippet_forward",    "fallback" },
-            ["<A-h>"] = { "snippet_backward",   "fallback" },
+            ["<A-j>"]   = { "select_next",        "fallback" },
+            ["<A-k>"]   = { "select_prev",        "fallback" },
+            ["<A-l>"]   = { "snippet_forward",    "fallback" },
+            ["<A-h>"]   = { "snippet_backward",   "fallback" },
+            ["<Tab>"]   = {},
+            ["<S-Tab"]  = {},
         },
 
         appearance = {
@@ -56,8 +58,10 @@ return {
         cmdline = {
             keymap = {
                 preset = "cmdline",
-                ["<A-j>"] = { "select_next", "fallback" },
-                ["<A-k>"] = { "select_prev", "fallback" },
+                ["<A-j>"]   = { "select_next", "fallback" },
+                ["<A-k>"]   = { "select_prev", "fallback" },
+                ["<Tab>"]   = {},
+                ["<S-Tab>"] = {},
             },
             completion = {
                 list = {
