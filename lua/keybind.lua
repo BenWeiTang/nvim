@@ -158,7 +158,7 @@ mini_move.setup({
 local is_unreal_project = require("project-env-config").GetIsUnrealProject()
 if not is_unreal_project then
     -- clangd extensions
-    vim.keymap.set("n", ThumbCombo("o"), "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Switch Source/Header" })
+    -- TODO: Figure out what to do with header/source switching
 else
     -- ATM clangd does not work properly with UE's setup because of the auto generated header file and its directory structure
     vim.keymap.set("n", ThumbCombo("o"), function()
