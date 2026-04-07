@@ -1,4 +1,5 @@
 return {
     "echasnovski/mini.bufremove",
-    version = "*"
+    version = false,
+    opts = {},
 }
