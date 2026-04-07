@@ -38,6 +38,9 @@ vim.keymap.set({"n", "v"}, ",p", "\"+p", { desc = "Paste from system clipboard" 
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+vim.keymap.set("n", ThumbCombo("/"), "gcc", { desc = "Comment", remap = true })
+vim.keymap.set("v", ThumbCombo("/"), "gc", { desc = "Comment", remap = true })
+
 -- Buffer Remove
 vim.keymap.set("n", "<leader>bd", function()
     local bd = require("mini.bufremove").delete
@@ -56,20 +59,6 @@ vim.keymap.set("n", "<leader>bd", function()
         bd(0)
     end
 end, { desc = "Delete buffer", remap = false })
-
-
--- Comment
-local comment = require("mini.comment")
-comment.setup({
-    mappings = {
-        -- Originally 'gc', but it's not really used so set to disabled
-        comment = "",
-        textobject = "",
-
-        comment_line = ThumbCombo("/"),
-        comment_visual = ThumbCombo("/"),
-    }
-})
 
 -- Blink-cmp
 -- The keymap setup for blink is a little weird. They are configured in its own plugin file for this reason.
