@@ -79,12 +79,18 @@ return {
 			dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
 		}
 
-		dashboard.section.footer.val = function()
-			local stats = require("lazy").stats()
-			local ms = stats.startuptime
-			return "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms"
-		end
+		dashboard.section.footer.val = "⚡ Loading stats..."
 		dashboard.section.footer.opts.hl = "Type"
+        vim.api.nvim_create_autocmd("User", {
+            pattern = "VeryLazy",
+            callback = function()
+                local stats = require("lazy").stats()
+                local ms = math.floor(stats.startuptime * 100 + 0.5) / 100
+                local db = require("alpha.themes.dashboard")
+                db.section.footer.val = "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms"
+                pcall(vim.cmd, "AlphaRedraw")
+            end
+        })
 
 		alpha.setup(dashboard.config)
 		vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
